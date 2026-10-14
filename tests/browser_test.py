@@ -10,7 +10,11 @@ with sync_playwright() as p:
     page = browser.new_page(viewport={'width':1440,'height':1000})
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
-    page.goto('http://127.0.0.1:5173', wait_until='networkidle')
+    base_url = os.environ.get('GARAJE_URL', 'http://127.0.0.1:5173')
+    if base_url.endswith('/demo.html'):
+        page.route('**/*', lambda route: route.continue_() if route.request.url == base_url else route.abort())
+    page.goto(base_url, wait_until='networkidle')
+    assert page.evaluate('getComputedStyle(document.body).backgroundColor') == 'rgb(16, 23, 28)', 'Dark theme did not load'
     expect(page.get_by_role('heading', name='Qué bueno verte de nuevo.')).to_be_visible()
     page.get_by_role('tab', name='Crear cuenta').click()
     page.get_by_label('Tu nombre').fill('Camila')
@@ -59,6 +63,7 @@ with sync_playwright() as p:
     expect(page.locator('#form-error')).to_contain_text('no puede disminuir')
     page.get_by_role('button', name='Cancelar',exact=True).click()
     page.get_by_role('button', name='Cambiar tema').click()
+    assert page.evaluate('getComputedStyle(document.body).backgroundColor') == 'rgb(243, 246, 243)', 'Light theme did not load'
     page.set_viewport_size({'width':390,'height':844})
     page.screenshot(path='/tmp/garaje-mobile.png', full_page=True)
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'Horizontal overflow'

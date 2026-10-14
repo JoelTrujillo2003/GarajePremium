@@ -1,4 +1,4 @@
-<!doctype html><html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Garaje Premium · Demo interactiva</title><style>500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+<!doctype html><html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Garaje Premium · Demo interactiva</title><style>
 :root {
   color-scheme: dark;
   --bg: #10171c;
@@ -1065,15 +1065,7 @@ dialog h2 {
 :root[data-theme="light"] .eyebrow {
   color: #416b2c;
 }
-</style></head><body><div id="app"><div class="loading">Preparando tu garaje…</div></div><div id="toast" role="status" aria-live="polite"></div><dialog id="modal" aria-labelledby="modal-title"></dialog><script>// Copia los valores públicos de Supabase > Project Settings > API.
-// La clave publicable/anon es pública. Nunca uses service_role aquí.
-window.GARAJE_CONFIG = Object.freeze({
-  supabaseUrl: "",
-  supabaseAnonKey: "",
-  demo: true, // false exige Supabase; la demo almacena datos solo en este navegador.
-  enablePaymentSimulation: true, // En Supabase requiere habilitar también app_settings.
-});
-
+</style></head><body><div id="app"><div class="loading">Preparando tu garaje…</div></div><div id="toast" role="status" aria-live="polite"></div><dialog id="modal" aria-labelledby="modal-title"></dialog><script>window.GARAJE_CONFIG = Object.freeze({demo:true,supabaseUrl:'',supabaseAnonKey:'',enablePaymentSimulation:true});
 (() => {
   // catalog.js
   var CURRENT_YEAR = 2026;

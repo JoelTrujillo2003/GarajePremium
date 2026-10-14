@@ -8,6 +8,19 @@ Descarga `demo.html` y ábrelo con tu navegador. Es una versión autónoma de la
 
 `demo.html` es una instantánea generada del frontend; los archivos modulares de raíz siguen siendo el código fuente para desarrollar y conectar Supabase.
 
+Para regenerar la demo después de modificar el frontend:
+
+```bash
+npm exec --yes --package esbuild@0.25.12 -- esbuild app.js --bundle --format=iife --target=es2022 --outfile=/tmp/garaje-demo-bundle.js
+python3 scripts/build-demo.py /tmp/garaje-demo-bundle.js
+```
+
+Con el servidor activo, prueba el archivo autónomo y sus estilos sin permitir dependencias de red:
+
+```bash
+GARAJE_URL=http://127.0.0.1:5173/demo.html CHROMIUM_PATH=/usr/bin/chromium python3 tests/browser_test.py
+```
+
 ## Así se ve la demo
 
 Captura real del panel con datos ficticios y una Bajaj Pulsar RS200:
