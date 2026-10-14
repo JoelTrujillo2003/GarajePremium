@@ -2,6 +2,20 @@
 
 Aplicación web para Chile: acceso obligatorio, suscripción simulada, varios vehículos, bitácora de mantenciones, gastos en CLP y planes preventivos. HTML5, CSS3, Tailwind por CDN y JavaScript ES modules, sin framework ni proceso de compilación para el frontend.
 
+## Probar sin instalar herramientas
+
+Descarga `demo.html` y ábrelo con tu navegador. Es una versión autónoma de la demo: incluye HTML, estilos y JavaScript en un solo archivo y no necesita descargar dependencias externas. Crea una cuenta de prueba y activa la suscripción simulada para recorrer el garaje. Si tu navegador corporativo bloquea archivos locales, utiliza el servidor descrito abajo. Los datos de esta demo se guardan solo en ese navegador; la IA y el pago son simulados.
+
+`demo.html` es una instantánea generada del frontend; los archivos modulares de raíz siguen siendo el código fuente para desarrollar y conectar Supabase.
+
+## Así se ve la demo
+
+Captura real del panel con datos ficticios y una Bajaj Pulsar RS200:
+
+![Panel de Garaje Premium](docs/panel.png)
+
+[Ver captura móvil](docs/movil.png).
+
 ## Ejecutar en Visual Studio Code
 
 1. Abre esta carpeta en VS Code.

@@ -1,0 +1,2215 @@
+<!doctype html><html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Garaje Premium · Demo interactiva</title><style>500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+:root {
+  color-scheme: dark;
+  --bg: #10171c;
+  --panel: #172127;
+  --panel2: #1d2a31;
+  --text: #edf3f3;
+  --muted: #96a8ae;
+  --line: #2b3a41;
+  --accent: #b9f582;
+  --accentText: #17260c;
+  --danger: #ffaaa6;
+  --gold: #f4c777;
+  --shadow: 0 12px 34px #0002;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f3f6f3;
+  --panel: #fff;
+  --panel2: #edf2ed;
+  --text: #182a27;
+  --muted: #61766d;
+  --line: #dbe4df;
+  --accent: #c5f39b;
+  --accentText: #203314;
+  --danger: #a52e28;
+  --gold: #966a1e;
+  --shadow: 0 12px 34px #1d372609;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font:
+    14px "DM Sans",
+    sans-serif;
+}
+h1,
+h2,
+h3,
+.brand {
+  font-family: Manrope, sans-serif;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+a {
+  color: inherit;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -1.4px;
+}
+h2 {
+  font-size: 21px;
+  letter-spacing: -0.5px;
+}
+h3 {
+  font-size: 16px;
+}
+p {
+  line-height: 1.7;
+}
+.muted {
+  color: var(--muted);
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.light {
+  font-weight: 400;
+}
+.brand {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+.mark {
+  width: 35px;
+  height: 35px;
+  background: var(--accent);
+  color: var(--accentText);
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 21px;
+  font-weight: 800;
+}
+.brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.btn {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 17px;
+  background: var(--panel2);
+  color: var(--text);
+  font-weight: 600;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition:
+    transform 0.15s,
+    filter 0.15s;
+}
+.btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.btn.primary {
+  background: var(--accent);
+  color: var(--accentText);
+  border-color: var(--accent);
+}
+.btn.ghost {
+  background: transparent;
+}
+.btn.small {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+.btn.danger {
+  color: var(--danger);
+}
+.full {
+  width: 100%;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.between {
+  justify-content: space-between;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.stack {
+  display: grid;
+  gap: 18px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: #b9f58215;
+  color: var(--accent);
+}
+:root[data-theme="light"] .tag {
+  color: #467627;
+}
+.tag.gold {
+  background: #f4c77712;
+  color: var(--gold);
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  border-radius: 50%;
+  background: currentColor;
+}
+.input,
+select,
+textarea {
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 12px 13px;
+  outline: none;
+  min-height: 44px;
+}
+.input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px #b9f58215;
+}
+label {
+  font-size: 12px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+.field {
+  margin-bottom: 17px;
+}
+.help {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 6px 0 0;
+}
+.error {
+  font-size: 12px;
+  color: var(--danger);
+  line-height: 1.6;
+  min-height: 18px;
+  margin: 8px 0;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.icon {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  background: var(--panel2);
+  flex-shrink: 0;
+}
+.loading {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  color: var(--muted);
+}
+.auth {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  min-height: 100vh;
+}
+.auth-story {
+  background:
+    radial-gradient(ellipse at 90% 80%, #3b543333, transparent 60%),
+    var(--panel);
+  padding: 48px 8%;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 55px;
+}
+.auth-story h1 {
+  font-size: clamp(36px, 4.5vw, 64px);
+  max-width: 570px;
+  line-height: 1.13;
+}
+.accent {
+  color: var(--accent);
+}
+.auth-story p {
+  max-width: 420px;
+  color: var(--muted);
+  font-size: 16px;
+}
+.road-art {
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(160deg, #21342b, #131f22);
+  max-width: 470px;
+}
+.road-art:before {
+  content: "";
+  position: absolute;
+  width: 440px;
+  height: 280px;
+  border: 40px solid #52675933;
+  border-radius: 50%;
+  top: 40px;
+  left: 60px;
+  transform: rotate(-20deg);
+}
+.road-art .car {
+  position: absolute;
+  right: 60px;
+  top: 45px;
+  font-size: 65px;
+  color: #b9f582;
+  transform: rotate(-10deg);
+}
+.road-art .stamp {
+  position: absolute;
+  left: 20px;
+  top: 22px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #b9f582;
+}
+.auth-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 8%;
+}
+.auth-box {
+  width: 100%;
+  max-width: 390px;
+}
+.auth-box h2 {
+  font-size: 29px;
+  margin-bottom: 9px;
+}
+.tabs {
+  display: flex;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 4px;
+  margin: 26px 0;
+}
+.tabs button {
+  flex: 1;
+  padding: 11px;
+  background: none;
+  color: var(--muted);
+  border: 0;
+  border-radius: 7px;
+}
+.tabs .active {
+  background: var(--panel2);
+  color: var(--text);
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.divider:before,
+.divider:after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+}
+.oauth {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.oauth .btn {
+  padding: 11px 6px;
+  font-size: 11px;
+}
+.demo-note {
+  border: 1px dashed var(--line);
+  border-radius: 9px;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 22px;
+}
+.auth-footer {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 25px;
+}
+.shell {
+  display: grid;
+  grid-template-columns: 236px 1fr;
+  min-height: 100vh;
+}
+.sidebar {
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 236px;
+  height: 100vh;
+  z-index: 10;
+}
+.sidebar .brand {
+  margin-bottom: 45px;
+}
+.nav-title {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin: 0 14px 12px;
+}
+.nav {
+  display: grid;
+  gap: 6px;
+}
+.nav button {
+  border: 0;
+  text-align: left;
+  background: transparent;
+  color: var(--muted);
+  padding: 13px 14px;
+  border-radius: 9px;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+.nav button.active {
+  background: #b9f58210;
+  color: var(--accent);
+}
+:root[data-theme="light"] .nav button.active {
+  color: #47732f;
+}
+.sidebar-bottom {
+  margin-top: auto;
+}
+.membership {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.membership p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+.user {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  gap: 10px;
+}
+.avatar {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 12px;
+}
+.user-details {
+  min-width: 0;
+  flex: 1;
+}
+.user-details strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+}
+.main {
+  grid-column: 2;
+  min-width: 0;
+}
+.topbar {
+  padding: 22px 40px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.breadcrumb {
+  font-size: 12px;
+  color: var(--muted);
+}
+.content {
+  max-width: 1400px;
+  margin: auto;
+  padding: 38px 40px;
+}
+.welcome {
+  margin-bottom: 28px;
+}
+.welcome h1 {
+  margin: 7px 0 9px;
+  font-size: 33px;
+}
+.welcome p {
+  margin: 0;
+  color: var(--muted);
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 26px;
+}
+.stat {
+  padding: 19px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stat strong {
+  font-size: 25px;
+  display: block;
+  font-family: Manrope;
+}
+.stat span {
+  font-size: 11px;
+  color: var(--muted);
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(270px, 1fr);
+  gap: 24px;
+}
+.section-heading {
+  margin-bottom: 20px;
+}
+.section-heading h2 {
+  margin: 0;
+}
+.vehicle-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 18px;
+  padding-bottom: 3px;
+}
+.vehicle-tabs button {
+  white-space: nowrap;
+}
+.vehicle-tabs .selected {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+:root[data-theme="light"] .vehicle-tabs .selected {
+  color: #3a692a;
+}
+.vehicle-card {
+  padding: 25px;
+  background:
+    radial-gradient(ellipse at 100% 10%, #b9f58210, transparent 65%),
+    var(--panel);
+}
+.vehicle-head h2 {
+  font-size: 24px;
+  margin: 8px 0;
+}
+.vehicle-visual {
+  margin: 22px 0;
+  background: linear-gradient(120deg, #27392f, #1a282d);
+  border: 1px solid #354840;
+  border-radius: 13px;
+  min-height: 160px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.vehicle-visual svg {
+  width: 76%;
+  height: 135px;
+  color: #abc0b1;
+  filter: drop-shadow(0 12px 10px #0005);
+}
+.vehicle-visual:after {
+  content: "GARAJE / CHILE";
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  color: #89a596;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+.vehicle-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.vehicle-meta > div {
+  border-right: 1px solid var(--line);
+}
+.vehicle-meta > div:last-child {
+  border: 0;
+}
+.vehicle-meta small {
+  color: var(--muted);
+  display: block;
+  font-size: 10px;
+  margin-bottom: 6px;
+}
+.vehicle-meta strong {
+  font-size: 15px;
+}
+.plan-banner {
+  margin: 20px 0;
+  background: #b9f58208;
+  border: 1px solid #b9f58230;
+  border-radius: 12px;
+  padding: 20px;
+}
+.plan-banner h3 {
+  margin-bottom: 6px;
+}
+.plan-banner p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+.task {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.task:last-child {
+  border-bottom: 0;
+}
+.task h3 {
+  font-size: 13px;
+  margin: 0 0 5px;
+}
+.task p {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 0;
+}
+.task .check {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: #f4c77712;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.task .task-body {
+  flex: 1;
+}
+.task small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.tip {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+.tip:last-child {
+  border: 0;
+}
+.tip p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 5px 0 0;
+}
+.empty {
+  padding: 45px 25px;
+  text-align: center;
+}
+.empty .icon {
+  margin: 0 auto 18px;
+}
+.empty p {
+  color: var(--muted);
+  max-width: 400px;
+  margin: 0 auto 22px;
+}
+.disclaimer {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 16px 0 0;
+}
+.footer {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 35px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+.timeline {
+  display: grid;
+  gap: 14px;
+}
+.record {
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+}
+.record h3 {
+  margin: 0 0 7px;
+}
+.record p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.record .actions {
+  margin-left: auto;
+}
+.premium-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 45px 25px;
+}
+.premium-page > h1,
+.premium-page > p {
+  text-align: center;
+}
+.pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin: 35px 0;
+}
+.price {
+  font-size: 44px;
+  font-family: Manrope;
+  font-weight: 800;
+  margin: 25px 0;
+}
+.price small {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+  color: var(--muted);
+  margin: 25px 0;
+}
+.features li:before {
+  content: "✓";
+  margin-right: 12px;
+  color: var(--accent);
+}
+.premium-card {
+  border-color: #b9f58260;
+  background:
+    radial-gradient(ellipse at 100% 0%, #b9f58215, transparent 65%),
+    var(--panel);
+}
+dialog {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  max-width: 580px;
+  width: calc(100% - 32px);
+  padding: 28px;
+  max-height: 90vh;
+  box-shadow: 0 40px 100px #0008;
+}
+dialog::backdrop {
+  background: #070e12b3;
+  backdrop-filter: blur(5px);
+}
+dialog .modal-head {
+  margin-bottom: 23px;
+}
+dialog h2 {
+  margin: 0;
+}
+.close {
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 23px;
+  padding: 4px 8px;
+}
+.modal-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+#toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  opacity: 0;
+  transition: 0.25s;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 11px;
+  box-shadow: var(--shadow);
+  padding: 14px 22px;
+  max-width: 90vw;
+  z-index: 100;
+  font-size: 13px;
+}
+#toast.visible {
+  transform: translateX(-50%);
+  opacity: 1;
+}
+.notice {
+  padding: 13px 17px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.mobile-brand {
+  display: none;
+}
+.theme {
+  font-size: 16px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+@media (min-width: 1500px) {
+  .content {
+    padding-top: 45px;
+  }
+  .auth-story {
+    padding: 60px 10%;
+  }
+}
+@media (max-width: 1100px) {
+  .shell {
+    grid-template-columns: 200px 1fr;
+  }
+  .sidebar {
+    width: 200px;
+    padding: 25px 15px;
+  }
+  .content {
+    padding: 28px 24px;
+  }
+  .topbar {
+    padding: 20px 24px;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .right-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .right-column > .card {
+    margin: 0;
+  }
+  .auth-story {
+    padding: 35px 7%;
+  }
+}
+@media (max-width: 760px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+  .auth-story {
+    padding: 25px;
+    gap: 24px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .auth-story h1 {
+    font-size: 35px;
+    margin-bottom: 12px;
+  }
+  .auth-story p {
+    font-size: 13px;
+    margin: 0;
+  }
+  .auth-story .road-art,
+  .auth-story .story-bottom {
+    display: none;
+  }
+  .auth-form {
+    padding: 30px 24px;
+  }
+  .shell {
+    display: block;
+  }
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 14px 20px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .sidebar .brand {
+    margin-bottom: 17px;
+  }
+  .sidebar .nav-title,
+  .sidebar-bottom {
+    display: none;
+  }
+  .nav {
+    display: flex;
+    gap: 4px;
+    overflow: auto;
+  }
+  .nav button {
+    padding: 10px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .main {
+    display: block;
+  }
+  .topbar {
+    padding: 15px 20px;
+  }
+  .content {
+    padding: 25px 20px;
+  }
+  .welcome {
+    align-items: flex-start;
+  }
+  .welcome h1 {
+    font-size: 28px;
+  }
+  .stats {
+    gap: 8px;
+  }
+  .stat {
+    padding: 14px 10px;
+    display: block;
+  }
+  .stat .icon {
+    display: none;
+  }
+  .stat strong {
+    font-size: 22px;
+  }
+  .stat span {
+    font-size: 10px;
+  }
+  .right-column {
+    display: block;
+  }
+  .right-column > .card {
+    margin-bottom: 20px;
+  }
+  .card {
+    padding: 20px;
+  }
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+  .pricing {
+    grid-template-columns: 1fr;
+  }
+  .premium-page {
+    padding: 25px 20px;
+  }
+  .footer {
+    flex-wrap: wrap;
+  }
+  .breadcrumb {
+    font-size: 10px;
+  }
+  .vehicle-meta strong {
+    font-size: 12px;
+  }
+  .vehicle-meta small {
+    font-size: 9px;
+  }
+  .record {
+    flex-wrap: wrap;
+  }
+  .record .actions {
+    margin-left: 0;
+  }
+  .topbar .tag {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+.arrow-icon {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.welcome h1 .arrow-icon {
+  width: 28px;
+  height: 28px;
+}
+.road-art .car {
+  right: 20px;
+  top: 10px;
+  width: 270px;
+  height: 135px;
+  transform: rotate(-5deg);
+}
+.road-art .car svg {
+  width: 100%;
+  height: 100%;
+}
+.right-column {
+  align-content: start;
+}
+.right-column > .card {
+  height: auto;
+}
+:root[data-theme="light"] .eyebrow {
+  color: #416b2c;
+}
+</style></head><body><div id="app"><div class="loading">Preparando tu garaje…</div></div><div id="toast" role="status" aria-live="polite"></div><dialog id="modal" aria-labelledby="modal-title"></dialog><script>// Copia los valores públicos de Supabase > Project Settings > API.
+// La clave publicable/anon es pública. Nunca uses service_role aquí.
+window.GARAJE_CONFIG = Object.freeze({
+  supabaseUrl: "",
+  supabaseAnonKey: "",
+  demo: true, // false exige Supabase; la demo almacena datos solo en este navegador.
+  enablePaymentSimulation: true, // En Supabase requiere habilitar también app_settings.
+});
+
+(() => {
+  // catalog.js
+  var CURRENT_YEAR = 2026;
+  var models = (entries) => entries.map(([name, firstYear]) => ({ name, firstYear }));
+  var CATALOG = {
+    Autom\u00F3vil: {
+      Chevrolet: models([
+        ["Sail", 2011],
+        ["Onix", 2013],
+        ["Spark", 2006]
+      ]),
+      Suzuki: models([
+        ["Swift", 2005],
+        ["Baleno", 2016],
+        ["Alto", 2e3]
+      ]),
+      Toyota: models([
+        ["Yaris", 2e3],
+        ["Corolla", 1990],
+        ["RAV4", 1996]
+      ]),
+      Hyundai: models([
+        ["Accent", 1995],
+        ["Grand i10", 2014],
+        ["Tucson", 2005]
+      ]),
+      Kia: models([
+        ["Rio", 2001],
+        ["Morning", 2004],
+        ["Sportage", 1995]
+      ]),
+      Peugeot: models([
+        ["208", 2013],
+        ["308", 2008],
+        ["2008", 2014]
+      ]),
+      Mazda: models([
+        ["Mazda3", 2004],
+        ["Mazda2", 2008],
+        ["CX-5", 2013]
+      ]),
+      Volkswagen: models([
+        ["Golf", 1995],
+        ["Polo", 1996],
+        ["T-Cross", 2020]
+      ]),
+      Nissan: models([
+        ["Versa", 2012],
+        ["Sentra", 1995],
+        ["Qashqai", 2008]
+      ]),
+      Subaru: models([
+        ["Impreza", 1995],
+        ["Forester", 1998],
+        ["XV", 2012]
+      ])
+    },
+    Camioneta: {
+      Toyota: models([["Hilux", 1990]]),
+      Ford: models([
+        ["Ranger", 1997],
+        ["F-150", 1998]
+      ]),
+      Mitsubishi: models([["L200", 1990]]),
+      Nissan: models([
+        ["Navara", 2008],
+        ["NP300", 2016]
+      ]),
+      Chevrolet: models([
+        ["D-Max", 2005],
+        ["Colorado", 2016],
+        ["Silverado", 1999]
+      ]),
+      "Great Wall": models([
+        ["Wingle 5", 2011],
+        ["Wingle 7", 2019],
+        ["Poer", 2021]
+      ]),
+      Maxus: models([
+        ["T60", 2017],
+        ["T90", 2022]
+      ]),
+      JAC: models([
+        ["T6", 2016],
+        ["T8", 2019]
+      ]),
+      Changan: models([["Hunter", 2020]]),
+      Mahindra: models([["Pik Up", 2007]])
+    },
+    Moto: {
+      Yamaha: models([
+        ["MT-03", 2016],
+        ["YZF-R3", 2015],
+        ["FZ 16", 2010],
+        ["Tenere 700", 2020]
+      ]),
+      Kawasaki: models([
+        ["Ninja 400", 2018],
+        ["Z400", 2019],
+        ["Versys 650", 2008]
+      ]),
+      KTM: models([
+        ["Duke 200", 2013],
+        ["Duke 390", 2014],
+        ["390 Adventure", 2020]
+      ]),
+      Bajaj: models([
+        ["Pulsar RS200", 2016],
+        ["Pulsar NS200", 2013],
+        ["Dominar 400", 2018]
+      ]),
+      Honda: models([
+        ["CB190R", 2016],
+        ["CB500F", 2014],
+        ["XR150L", 2015]
+      ]),
+      Suzuki: models([
+        ["Gixxer 150", 2015],
+        ["V-Strom 650", 2005],
+        ["GSX-R150", 2018]
+      ]),
+      TVS: models([
+        ["Apache RTR 160", 2014],
+        ["Apache RTR 200", 2017],
+        ["Apache RR 310", 2019]
+      ]),
+      "BMW Motorrad": models([
+        ["G 310 R", 2017],
+        ["G 310 GS", 2018],
+        ["R 1250 GS", 2019]
+      ]),
+      Benelli: models([
+        ["TNT 300", 2015],
+        ["TRK 502", 2018],
+        ["Leoncino 500", 2018]
+      ])
+    }
+  };
+  function validateVehicle(v) {
+    const model = CATALOG[v.type]?.[v.brand]?.find((m) => m.name === v.model);
+    if (!model)
+      throw new Error("Selecciona un tipo, marca y modelo del cat\xE1logo.");
+    if (!Number.isInteger(v.year) || v.year < model.firstYear || v.year > CURRENT_YEAR)
+      throw new Error(
+        `El a\xF1o debe estar entre ${model.firstYear} y ${CURRENT_YEAR}.`
+      );
+    if (!Number.isInteger(v.mileage) || v.mileage < 0 || v.mileage > 999999)
+      throw new Error("Ingresa un kilometraje entero entre 0 y 999.999 km.");
+    return v;
+  }
+  var formatKm = (n) => new Intl.NumberFormat("es-CL").format(n);
+  function parseMileage(value) {
+    if (!/^\d{1,3}(?:\.\d{3})*$|^\d{1,6}$/.test(String(value)))
+      throw new Error(
+        "Ingresa un kilometraje v\xE1lido, sin negativos ni decimales."
+      );
+    const n = Number(String(value).replaceAll(".", ""));
+    if (!Number.isInteger(n) || n > 999999)
+      throw new Error("El m\xE1ximo es 999.999 km.");
+    return n;
+  }
+
+  // planner.js
+  function demoPlan(vehicle2, records2 = []) {
+    const moto = vehicle2.type === "Moto";
+    const intervals = moto ? [
+      [
+        "Aceite y filtro",
+        5e3,
+        "Revisa el nivel y utiliza la especificaci\xF3n indicada en el manual."
+      ],
+      [
+        "Transmisi\xF3n y cadena",
+        1e3,
+        "Si tu moto usa cadena, revisa tensi\xF3n, limpieza y lubricaci\xF3n."
+      ],
+      [
+        "Frenos y neum\xE1ticos",
+        5e3,
+        "Comprueba desgaste, presi\xF3n en fr\xEDo y funcionamiento de ambos frenos."
+      ],
+      [
+        "Filtro de aire y buj\xEDa",
+        1e4,
+        "Inspecciona seg\xFAn el manual; el polvo puede acortar el intervalo."
+      ]
+    ] : [
+      [
+        "Aceite y filtro",
+        1e4,
+        "Consulta el intervalo y la viscosidad en el manual de tu motorizaci\xF3n."
+      ],
+      [
+        "Frenos y neum\xE1ticos",
+        1e4,
+        "Revisa pastillas, discos, presi\xF3n en fr\xEDo y desgaste irregular."
+      ],
+      [
+        "Filtro de aire y habit\xE1culo",
+        15e3,
+        "Inspecciona ambos filtros, especialmente si circulas por caminos de tierra."
+      ],
+      [
+        "Refrigeraci\xF3n y correas",
+        2e4,
+        "Revisa fugas, niveles y estado visible; la distribuci\xF3n sigue el manual espec\xEDfico."
+      ]
+    ];
+    const now = [], upcoming = [];
+    intervals.forEach(([title, interval, description]) => {
+      const completed = records2.filter((r) => r.category === title).sort((a, b) => b.mileage - a.mileage)[0];
+      const target = completed ? completed.mileage + interval : interval;
+      if (target <= vehicle2.mileage)
+        now.push({
+          title,
+          description: completed ? description : "Sin registro previo: verifica el historial antes de decidir un cambio. " + description,
+          targetKm: target
+        });
+      else if (target <= 999999)
+        upcoming.push({ title, description, targetKm: target });
+    });
+    return {
+      source: "demo",
+      immediate: now,
+      upcoming: upcoming.sort((a, b) => a.targetKm - b.targetKm),
+      tips: [
+        moto ? "En pavimento mojado, aumenta la distancia y evita frenar bruscamente sobre pintura vial." : "En tacos urbanos y trayectos cortos, revisa si el manual recomienda el programa de uso severo.",
+        "Despu\xE9s de caminos con polvo, revisa el filtro de aire. No lo cambies solo por kilometraje sin inspecci\xF3n.",
+        "Si circulas cerca de la costa, lava la sal con agua dulce y revisa signos de corrosi\xF3n.",
+        "Antes de un viaje por carretera o cordillera, controla neum\xE1ticos, frenos y niveles con el motor fr\xEDo."
+      ],
+      summary: "Plan de referencia basado en intervalos gen\xE9ricos y tu bit\xE1cora. Confirma los plazos por tiempo, kilometraje y motorizaci\xF3n en el manual del fabricante."
+    };
+  }
+
+  // api.js
+  var config = window.GARAJE_CONFIG;
+  var demo = config.demo === true;
+  var KEY = "garaje-premium-demo-v1";
+  var db;
+  function read() {
+    try {
+      return JSON.parse(localStorage.getItem(KEY)) || {
+        users: [],
+        session: null,
+        vehicles: [],
+        records: []
+      };
+    } catch {
+      throw new Error(
+        "No se pudo leer la demo. Revisa el almacenamiento de tu navegador."
+      );
+    }
+  }
+  function write(data) {
+    localStorage.setItem(KEY, JSON.stringify(data));
+  }
+  function result({ data, error }) {
+    if (error) throw new Error(error.message);
+    return data;
+  }
+  async function hashPassword(password, salt) {
+    const material = await crypto.subtle.importKey(
+      "raw",
+      new TextEncoder().encode(password),
+      "PBKDF2",
+      false,
+      ["deriveBits"]
+    );
+    const bits = await crypto.subtle.deriveBits(
+      {
+        name: "PBKDF2",
+        hash: "SHA-256",
+        salt: new TextEncoder().encode(salt),
+        iterations: 12e4
+      },
+      material,
+      256
+    );
+    return Array.from(
+      new Uint8Array(bits),
+      (x) => x.toString(16).padStart(2, "0")
+    ).join("");
+  }
+  function publicUser(u) {
+    return { id: u.id, email: u.email, user_metadata: { full_name: u.name } };
+  }
+  function current(data) {
+    const u = data.users.find((x) => x.id === data.session);
+    if (!u) throw new Error("Inicia sesi\xF3n para continuar.");
+    return u;
+  }
+  function owner(data, id) {
+    const u = current(data);
+    const v = data.vehicles.find((x) => x.id === id && x.user_id === u.id);
+    if (!v) throw new Error("Veh\xEDculo no disponible.");
+    return v;
+  }
+  var API = {
+    demo,
+    async init() {
+      if (demo) {
+        return API.session();
+      }
+      if (!config.supabaseUrl || !config.supabaseAnonKey)
+        throw new Error(
+          "Configura la URL y clave p\xFAblica de Supabase en config.js, o activa demo."
+        );
+      if (!window.supabase)
+        throw new Error("No se pudo cargar Supabase. Revisa la conexi\xF3n al CDN.");
+      db = window.supabase.createClient(
+        config.supabaseUrl,
+        config.supabaseAnonKey
+      );
+      return API.session();
+    },
+    async session() {
+      if (demo) {
+        const d = read(), u = d.users.find((u2) => u2.id === d.session);
+        return u ? publicUser(u) : null;
+      }
+      const { session } = result(await db.auth.getSession());
+      return session?.user || null;
+    },
+    onAuth(callback) {
+      if (!demo)
+        db.auth.onAuthStateChange((event) => {
+          if (["SIGNED_IN", "SIGNED_OUT", "PASSWORD_RECOVERY"].includes(event))
+            setTimeout(() => callback(event), 0);
+        });
+    },
+    async signIn(email, password) {
+      if (demo) {
+        const d = read();
+        const u = d.users.find((x) => x.email === email.toLowerCase());
+        if (!u || u.hash !== await hashPassword(password, u.salt))
+          throw new Error("Correo o contrase\xF1a incorrectos.");
+        d.session = u.id;
+        write(d);
+        return publicUser(u);
+      }
+      return result(await db.auth.signInWithPassword({ email, password })).user;
+    },
+    async signUp(name, email, password) {
+      if (demo) {
+        const d = read();
+        if (d.users.some((u2) => u2.email === email.toLowerCase()))
+          throw new Error("Este correo ya est\xE1 registrado en la demo.");
+        const salt = crypto.randomUUID();
+        const u = {
+          id: crypto.randomUUID(),
+          name,
+          email: email.toLowerCase(),
+          salt,
+          hash: await hashPassword(password, salt),
+          premium_until: null
+        };
+        d.users.push(u);
+        d.session = u.id;
+        write(d);
+        return publicUser(u);
+      }
+      const data = result(
+        await db.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { full_name: name },
+            emailRedirectTo: location.origin + location.pathname
+          }
+        })
+      );
+      return data.session ? data.user : null;
+    },
+    async oauth(provider) {
+      if (demo)
+        throw new Error(
+          "OAuth requiere configurar Supabase y el proveedor. Usa correo y contrase\xF1a para probar la demo."
+        );
+      result(
+        await db.auth.signInWithOAuth({
+          provider,
+          options: {
+            redirectTo: location.origin + location.pathname,
+            ...provider === "azure" ? { scopes: "email" } : {}
+          }
+        })
+      );
+    },
+    async reset(email) {
+      if (demo)
+        throw new Error(
+          "La recuperaci\xF3n por correo est\xE1 disponible al conectar Supabase. No uses una contrase\xF1a real en la demo."
+        );
+      result(
+        await db.auth.resetPasswordForEmail(email, {
+          redirectTo: location.origin + location.pathname
+        })
+      );
+    },
+    async changePassword(password) {
+      if (demo) throw new Error("Disponible con Supabase.");
+      result(await db.auth.updateUser({ password }));
+    },
+    async signOut() {
+      if (demo) {
+        const d = read();
+        d.session = null;
+        write(d);
+      } else result(await db.auth.signOut());
+    },
+    async profile() {
+      if (demo) {
+        const d = read(), u = current(d);
+        return { id: u.id, full_name: u.name, premium_until: u.premium_until };
+      }
+      return result(
+        await db.from("profiles").select("id, full_name, premium_until").single()
+      );
+    },
+    async subscribe() {
+      if (!config.enablePaymentSimulation)
+        throw new Error(
+          "La simulaci\xF3n est\xE1 desactivada. Conecta una pasarela para habilitar pagos reales."
+        );
+      if (demo) {
+        const d = read(), u = current(d);
+        u.premium_until = new Date(Date.now() + 30 * 864e5).toISOString();
+        write(d);
+        return;
+      }
+      result(await db.rpc("activate_simulated_subscription"));
+    },
+    async vehicles() {
+      if (demo) {
+        const d = read(), u = current(d);
+        return d.vehicles.filter((v) => v.user_id === u.id);
+      }
+      return result(
+        await db.from("vehicles").select("*").order("created_at", { ascending: false })
+      );
+    },
+    async addVehicle(values) {
+      validateVehicle(values);
+      if (demo) {
+        const d = read(), u = current(d);
+        if (!u.premium_until || Date.parse(u.premium_until) <= Date.now())
+          throw new Error("Activa tu membres\xEDa.");
+        const v = {
+          ...values,
+          id: crypto.randomUUID(),
+          user_id: u.id,
+          created_at: (/* @__PURE__ */ new Date()).toISOString()
+        };
+        d.vehicles.unshift(v);
+        write(d);
+        return v;
+      }
+      const user2 = await API.session();
+      return result(
+        await db.from("vehicles").insert({ ...values, user_id: user2.id }).select().single()
+      );
+    },
+    async updateMileage(id, mileage) {
+      if (!Number.isInteger(mileage) || mileage < 0 || mileage > 999999)
+        throw new Error("Kilometraje inv\xE1lido.");
+      if (demo) {
+        const d = read(), v = owner(d, id);
+        if (mileage < v.mileage)
+          throw new Error("El kilometraje no puede disminuir.");
+        v.mileage = mileage;
+        write(d);
+        return;
+      }
+      result(
+        await db.rpc("update_vehicle_mileage", {
+          p_vehicle_id: id,
+          p_mileage: mileage
+        })
+      );
+    },
+    async removeVehicle(id) {
+      if (demo) {
+        const d = read();
+        owner(d, id);
+        d.vehicles = d.vehicles.filter((v) => v.id !== id);
+        d.records = d.records.filter((r) => r.vehicle_id !== id);
+        write(d);
+      } else result(await db.from("vehicles").delete().eq("id", id));
+    },
+    async records(id) {
+      if (demo) {
+        const d = read();
+        owner(d, id);
+        return d.records.filter((r) => r.vehicle_id === id).sort((a, b) => b.service_date.localeCompare(a.service_date));
+      }
+      return result(
+        await db.from("maintenance_records").select("*").eq("vehicle_id", id).order("service_date", { ascending: false })
+      );
+    },
+    async addRecord(id, values) {
+      if (demo) {
+        const d = read(), v = owner(d, id);
+        const u = current(d);
+        if (!u.premium_until || Date.parse(u.premium_until) <= Date.now())
+          throw new Error("Activa tu membres\xEDa.");
+        d.records.unshift({
+          ...values,
+          id: crypto.randomUUID(),
+          user_id: u.id,
+          vehicle_id: id,
+          created_at: (/* @__PURE__ */ new Date()).toISOString()
+        });
+        v.mileage = Math.max(v.mileage, values.mileage);
+        write(d);
+      } else
+        result(
+          await db.rpc("add_maintenance_record", {
+            p_vehicle_id: id,
+            p_category: values.category,
+            p_mileage: values.mileage,
+            p_service_date: values.service_date,
+            p_cost: values.cost,
+            p_workshop: values.workshop,
+            p_notes: values.notes
+          })
+        );
+    },
+    async removeRecord(id) {
+      if (demo) {
+        const d = read(), u = current(d);
+        d.records = d.records.filter((r) => !(r.id === id && r.user_id === u.id));
+        write(d);
+      } else result(await db.from("maintenance_records").delete().eq("id", id));
+    },
+    async plan(vehicle2, records2) {
+      if (demo) return demoPlan(vehicle2, records2);
+      const { data, error } = await db.functions.invoke("maintenance-plan", {
+        body: { vehicle_id: vehicle2.id }
+      });
+      if (error) {
+        let message = error.message;
+        try {
+          const details = await error.context?.json();
+          if (details?.error) message = details.error;
+        } catch {
+        }
+        throw new Error(message);
+      }
+      if (data.error) throw new Error(data.error);
+      return data;
+    }
+  };
+
+  // app.js
+  var app = document.querySelector("#app");
+  var modal = document.querySelector("#modal");
+  var user = null;
+  var profile = null;
+  var vehicles = [];
+  var records = [];
+  var selected = null;
+  var view = "dashboard";
+  var authMode = "login";
+  var plan = null;
+  var recovery = new URLSearchParams(location.hash.slice(1)).get("type") === "recovery";
+  var loadVersion = 0;
+  var toastTimer;
+  var generating = false;
+  var $ = (s) => document.querySelector(s);
+  var arrow = '<svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>';
+  var esc = (s) => String(s ?? "").replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]
+  );
+  var money = (n) => new Intl.NumberFormat("es-CL", {
+    style: "currency",
+    currency: "CLP",
+    maximumFractionDigits: 0
+  }).format(n);
+  var date = (s) => new Intl.DateTimeFormat("es-CL", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    timeZone: "America/Santiago"
+  }).format(new Date(s.length === 10 ? s + "T12:00:00-03:00" : s));
+  var today = () => new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Santiago",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(/* @__PURE__ */ new Date());
+  var premium = () => profile?.premium_until && Date.parse(profile.premium_until) > Date.now();
+  var vehicle = () => vehicles.find((v) => v.id === selected);
+  var brand = () => '<div class="brand"><span class="mark">G<span class="visually-hidden">araje</span></span><div>garaje<span class="light">premium</span><small>DRIVE WITH CONFIDENCE</small></div></div>';
+  function toast(text) {
+    $("#toast").textContent = text;
+    $("#toast").classList.add("visible");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => $("#toast").classList.remove("visible"), 5e3);
+  }
+  function fail(error) {
+    toast(error.message || "No se pudo completar la operaci\xF3n.");
+  }
+  function theme() {
+    const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem("garaje-theme", next);
+  }
+  try {
+    document.documentElement.dataset.theme = localStorage.getItem("garaje-theme") || "dark";
+  } catch {
+  }
+  function renderAuth() {
+    const signup = authMode === "signup";
+    app.innerHTML = `<main class="auth"><section class="auth-story">${brand()}<div><span class="eyebrow">MENOS INCERTIDUMBRE. M\xC1S CAMINO.</span><h1 style="margin-top:20px">Tu pr\xF3ximo viaje<br>empieza con<br><span class="accent">tranquilidad.</span></h1><p>Todo el cuidado de tu veh\xEDculo, en un solo lugar. Conoce su historia y anticipa su pr\xF3xima mantenci\xF3n.</p><div class="road-art" style="margin-top:30px" aria-hidden="true"><span class="stamp">EL CAMINO ES TUYO.</span><span class="car">${vehicleArt("Autom\xF3vil")}</span></div></div><div class="story-bottom"><span class="tag"><span class="dot"></span> DISE\xD1ADO PARA CHILE</span><p style="font-size:11px;margin:14px 0 0">Autom\xF3viles \xB7 Camionetas \xB7 Motocicletas</p></div></section><section class="auth-form"><div class="auth-box"><div class="row between"><span class="eyebrow">BIENVENIDO A TU GARAJE</span><button class="btn small theme" data-action="theme" aria-label="Cambiar tema">\u25D0</button></div><h2 style="margin-top:17px">${signup ? "Comienza a cuidar mejor." : "Qu\xE9 bueno verte de nuevo."}</h2><p class="muted">${signup ? "Crea tu cuenta. Tu veh\xEDculo te lo agradecer\xE1." : "Ingresa para tener todo bajo control."}</p><div class="tabs" role="tablist" aria-label="Acceso"><button role="tab" aria-selected="${!signup}" class="${!signup ? "active" : ""}" data-auth="login">Iniciar sesi\xF3n</button><button role="tab" aria-selected="${signup}" class="${signup ? "active" : ""}" data-auth="signup">Crear cuenta</button></div><form id="auth-form">${signup ? '<div class="field"><label for="name">Tu nombre</label><input class="input" id="name" name="name" autocomplete="name" maxlength="80" required placeholder="\xBFC\xF3mo te llamas?"></div>' : ""}<div class="field"><label for="email">Correo electr\xF3nico</label><input class="input" id="email" name="email" type="email" maxlength="254" autocomplete="email" required placeholder="tu@correo.cl"></div><div class="field"><div class="row between"><label for="password">Contrase\xF1a</label>${!signup ? '<button type="button" class="close" style="font-size:11px" data-action="forgot">\xBFLa olvidaste?</button>' : ""}</div><input class="input" id="password" name="password" type="password" minlength="8" maxlength="128" required autocomplete="${signup ? "new-password" : "current-password"}" placeholder="M\xEDnimo 8 caracteres"></div><p class="error" id="auth-error" role="alert"></p><button class="btn primary full" type="submit">${signup ? "Crear mi cuenta" : "Entrar a mi garaje"} <span aria-hidden="true">${arrow}</span></button></form><div class="divider">o contin\xFAa con</div><div class="oauth"><button class="btn" data-oauth="google">G \xB7 Google</button><button class="btn" data-oauth="apple">\u25CF \xB7 Apple</button><button class="btn" data-oauth="azure">\u25A6 \xB7 Microsoft</button></div>${API.demo ? '<div class="demo-note"><strong>Modo demostraci\xF3n \xB7 sin conexi\xF3n a Supabase</strong><br>Usa un correo de prueba y una contrase\xF1a exclusiva para esta demo. Los datos se guardan en este navegador; no se env\xEDan correos ni se realizan cobros.</div>' : ""}<p class="auth-footer">Tus datos, tu control. <button class="close" style="font-size:11px;text-decoration:underline" data-action="privacy">Privacidad y condiciones</button></p></div></section></main>`;
+    $("#auth-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = e.target, b = f.querySelector("[type=submit]");
+      b.disabled = true;
+      $("#auth-error").textContent = "";
+      try {
+        const d = new FormData(f);
+        if (signup && !d.get("name").trim())
+          throw new Error("Ingresa tu nombre.");
+        user = signup ? await API.signUp(
+          d.get("name").trim(),
+          d.get("email").trim(),
+          d.get("password")
+        ) : await API.signIn(d.get("email").trim(), d.get("password"));
+        if (!user) {
+          toast("Revisa tu correo y confirma la cuenta antes de iniciar sesi\xF3n.");
+          authMode = "login";
+          renderAuth();
+          return;
+        }
+        await load();
+      } catch (e2) {
+        if ($("#auth-error")) $("#auth-error").textContent = e2.message;
+      } finally {
+        b.disabled = false;
+      }
+    });
+  }
+  function shell(body) {
+    app.innerHTML = `<div class="shell"><aside class="sidebar">${brand()}<div class="nav-title">TU ESPACIO</div><nav class="nav" aria-label="Principal"><button data-view="dashboard" class="${view === "dashboard" ? "active" : ""}">\u25A6 <span>Vista general</span></button><button data-view="garage" class="${view === "garage" ? "active" : ""}">\u25C7 <span>Mis veh\xEDculos</span></button><button data-view="records" class="${view === "records" ? "active" : ""}">\u2637 <span>Bit\xE1cora</span></button><button data-view="account" class="${view === "account" ? "active" : ""}">\u2699 <span>Mi cuenta</span></button></nav><div class="sidebar-bottom"><div class="membership"><span class="tag">\u2726 ${premium() ? "PREMIUM ACTIVO" : "TU PLAN PREMIUM"}</span><p>${premium() ? `Vigente hasta ${date(profile.premium_until)}` : "Desbloquea una mejor forma de cuidar tu veh\xEDculo."}</p></div><div class="row user"><div class="avatar">${esc((profile?.full_name || user.email || "U").slice(0, 2).toUpperCase())}</div><div class="user-details"><strong>${esc(profile?.full_name || "Mi cuenta")}</strong><span class="muted" style="font-size:10px">${API.demo ? "Cuenta de demostraci\xF3n" : "Conectado a Supabase"}</span></div><button class="close" data-action="logout" aria-label="Cerrar sesi\xF3n">\u21AA</button></div></div></aside><main class="main"><header class="topbar"><span class="breadcrumb">Mi espacio <span style="margin:0 10px">/</span> <strong style="color:var(--text)">${{ dashboard: "Vista general", garage: "Mis veh\xEDculos", records: "Bit\xE1cora", account: "Mi cuenta" }[view]}</strong></span><div class="row"><span class="tag"><span class="dot"></span> ${API.demo ? "DEMO LOCAL" : "CHILE \xB7 CLP"}</span><button class="btn small theme" data-action="theme" aria-label="Cambiar tema">\u25D0</button><button class="btn small ghost" data-action="logout" aria-label="Cerrar sesi\xF3n">Salir</button></div></header><div class="content">${body}<footer class="footer"><span>\xA9 2026 Garaje Premium \xB7 Hecho para los caminos de Chile</span><button class="close" style="font-size:10px" data-action="privacy">Privacidad y condiciones</button></footer></div></main></div>`;
+  }
+  function renderPayment() {
+    shell(
+      `<section class="premium-page"><p class="eyebrow">UN BUEN CUIDADO COMIENZA AQU\xCD</p><h1>M\xE1s que una bit\xE1cora.<br><span class="accent">Tranquilidad en cada kil\xF3metro.</span></h1><p class="muted">Hola, ${esc(profile?.full_name?.split(" ")[0] || "bienvenido")}. Activa tu membres\xEDa para abrir tu garaje.</p><div class="pricing"><div class="card"><span class="eyebrow">TU COMPA\xD1ERO EN EL CAMINO</span><h2 style="margin-top:20px">Cuida hoy.<br>Anticipa ma\xF1ana.</h2><ul class="features"><li>Varios veh\xEDculos en un solo lugar</li><li>Historial de servicios y gastos en CLP</li><li>Plan de mantenciones personalizado</li><li>Consejos para las condiciones de Chile</li><li>Exportaci\xF3n de tu bit\xE1cora en CSV</li></ul><p class="disclaimer">Los planes son orientativos y no reemplazan el manual ni una inspecci\xF3n profesional.</p></div><div class="card premium-card"><div class="row between"><h3 style="margin:0">Garaje Premium</h3><span class="tag">PLAN MENSUAL</span></div><div class="price">$4.990 <small>CLP / mes</small></div><p class="muted">Un peque\xF1o h\xE1bito. Una gran diferencia para tu veh\xEDculo.</p><div class="notice">${window.GARAJE_CONFIG.enablePaymentSimulation ? "Pago simulado: activa 30 d\xEDas de acceso, sin cobros, tarjetas ni renovaci\xF3n autom\xE1tica." : "Los pagos a\xFAn no est\xE1n habilitados. El administrador debe conectar una pasarela."}</div><button class="btn primary full" data-action="subscribe" ${window.GARAJE_CONFIG.enablePaymentSimulation ? "" : "disabled"}>Activar suscripci\xF3n de prueba ${arrow}</button><p class="disclaimer">${API.demo ? "En esta demo el an\xE1lisis utiliza reglas de referencia, no un modelo de IA." : "El an\xE1lisis de IA requiere desplegar la funci\xF3n maintenance-plan."} El precio es ilustrativo.</p></div></div></section>`
+    );
+  }
+  function render() {
+    if (!user) {
+      renderAuth();
+      return;
+    }
+    if (recovery) {
+      renderRecovery();
+      return;
+    }
+    if (!premium() && view !== "account") {
+      renderPayment();
+      return;
+    }
+    if (view === "account") {
+      renderAccount();
+      return;
+    }
+    if (view === "garage") {
+      renderGarage();
+      return;
+    }
+    if (view === "records") {
+      renderRecords();
+      return;
+    }
+    renderDashboard();
+  }
+  function vehicleArt(type) {
+    return type === "Moto" ? `<svg viewBox="0 0 400 160" fill="none" aria-hidden="true"><circle cx="86" cy="114" r="31" stroke="currentColor" stroke-width="8"/><circle cx="310" cy="114" r="31" stroke="currentColor" stroke-width="8"/><path d="M86 114l66-58 53 58H86zm119 0 62-49 43 49M267 65l-16-38h-27M147 58l-9-15h49l26 14-8 57" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/><path d="M213 57l43 7-16-35-31-6-26 20M115 53l37 6-2 16-63 1" fill="currentColor"/></svg>` : `<svg viewBox="0 0 400 160" fill="none" aria-hidden="true"><path d="M44 107l12-31 66-12 48-39h${type === "Camioneta" ? "80l35 44h56l24 17" : "93l53 39 38 15 10 28"}v24H44z" fill="currentColor" opacity=".75"/><path d="M144 63l35-28h67l31 28z" fill="#17292b"/><path d="M211 34v30" stroke="currentColor" stroke-width="5"/><circle cx="106" cy="116" r="26" fill="#142022" stroke="currentColor" stroke-width="6"/><circle cx="304" cy="116" r="26" fill="#142022" stroke="currentColor" stroke-width="6"/><circle cx="106" cy="116" r="11" fill="currentColor"/><circle cx="304" cy="116" r="11" fill="currentColor"/><path d="M44 93h25M337 86h18" stroke="#b9f582" stroke-width="5"/></svg>`;
+  }
+  function tabs() {
+    return `<div class="vehicle-tabs" aria-label="Veh\xEDculo seleccionado">${vehicles.map((v) => `<button class="btn small ${v.id === selected ? "selected" : ""}" data-vehicle="${esc(v.id)}" aria-pressed="${v.id === selected}">${v.type === "Moto" ? arrow : "\u25C7"} ${esc(v.brand)} ${esc(v.model)}</button>`).join("")}</div>`;
+  }
+  function vehicleCard(v) {
+    return `<section class="card vehicle-card"><div class="row between vehicle-head"><div><span class="tag">${esc(v.type.toUpperCase())}</span><h2>${esc(v.brand)} ${esc(v.model)}</h2><span class="muted" style="font-size:12px">Modelo ${v.year} \xB7 Tu compa\xF1ero de ruta</span></div><button class="btn small ghost" data-action="mileage" aria-label="Actualizar kilometraje">${arrow} Actualizar km</button></div><div class="vehicle-visual">${vehicleArt(v.type)}</div><div class="vehicle-meta"><div><small>KILOMETRAJE ACTUAL</small><strong>${formatKm(v.mileage)} <span class="muted">km</span></strong></div><div><small>\xDALTIMA MANTENCI\xD3N</small><strong>${records.length ? date(records[0].service_date) : "Sin registros"}</strong></div><div><small>SEGUIMIENTO</small><strong style="color:var(--gold)">${plan ? plan.immediate.length ? "Revisiones sugeridas" : "Al d\xEDa seg\xFAn registros" : "Por analizar"}</strong></div></div></section>`;
+  }
+  function planTasks(items, upcoming = false) {
+    return items.length ? items.map(
+      (t) => `<div class="task"><span class="check">${upcoming ? arrow : "!"}</span><div class="task-body"><h3>${esc(t.title)}</h3><p>${esc(t.description)}</p><small>${upcoming ? "Referencia:" : "Verificar desde:"} ${formatKm(t.targetKm)} km</small></div></div>`
+    ).join("") : '<p class="muted" style="font-size:12px">Sin tareas en esta categor\xEDa. Revisa tambi\xE9n los intervalos por tiempo del manual.</p>';
+  }
+  function renderDashboard() {
+    const v = vehicle();
+    const total = records.reduce((sum, r) => sum + r.cost, 0);
+    shell(
+      `<div class="row between wrap welcome"><div><span class="eyebrow">TU VEH\xCDCULO, BAJO CONTROL</span><h1>Hola, ${esc(profile.full_name?.split(" ")[0] || "conductor")} <span class="light">${arrow}</span></h1><p>Un vistazo a tu garaje. Y a todo lo que viene.</p></div><button class="btn primary" data-action="add-vehicle">\uFF0B Agregar veh\xEDculo</button></div><div class="stats"><div class="card stat"><span class="icon">\u25C7</span><div><strong>${vehicles.length.toString().padStart(2, "0")}</strong><span>Veh\xEDculos en tu garaje</span></div></div><div class="card stat"><span class="icon">\u2637</span><div><strong>${records.length.toString().padStart(2, "0")}</strong><span>Servicios del veh\xEDculo</span></div></div><div class="card stat"><span class="icon">\uFF04</span><div><strong style="font-size:22px">${money(total)}</strong><span>Inversi\xF3n registrada</span></div></div></div>${v ? `${tabs()}<div class="dashboard-grid"><div>${vehicleCard(v)}<div class="plan-banner"><div class="row between"><h3>\u2726 ${API.demo ? "Plan orientativo de demostraci\xF3n" : "Tu copiloto con IA"}</h3><span class="tag">PREMIUM</span></div><p>${API.demo ? "Explora recomendaciones de referencia con tu kilometraje e historial." : "Analiza tu veh\xEDculo y sus registros para anticipar el siguiente servicio."}</p><button class="btn primary small" data-action="generate" ${generating ? "disabled" : ""}>${generating ? "Analizando\u2026" : "Generar plan de mantenciones"} ${arrow}</button></div>${plan ? `<section class="card"><div class="row between section-heading"><h2>Para revisar ahora</h2><span class="tag gold">${plan.immediate.length} SUGERENCIAS</span></div>${planTasks(plan.immediate)}<p class="disclaimer">${esc(plan.summary)}</p></section>` : '<section class="card empty"><span class="icon">\u2726</span><h3>Antic\xEDpate al pr\xF3ximo kil\xF3metro.</h3><p>Genera un plan para ver qu\xE9 revisar ahora y qu\xE9 se aproxima. A\xFAn no hemos evaluado el veh\xEDculo.</p></section>'}</div><aside class="right-column stack"><section class="card"><div class="row between section-heading"><h2>En el horizonte</h2><span class="muted">${arrow}</span></div>${plan ? planTasks(plan.upcoming, true) : '<p class="muted">Tu pr\xF3ximo servicio empieza con un plan. Genera el an\xE1lisis para ver las sugerencias.</p>'}<p class="disclaimer">Intervalos orientativos. El kilometraje por s\xED solo no determina el estado mec\xE1nico.</p></section><section class="card"><span class="eyebrow">CUIDADO INTELIGENTE</span><h2 style="margin-top:10px">Peque\xF1os h\xE1bitos.<br>Grandes recorridos.</h2>${(plan?.tips || ["Mant\xE9n la presi\xF3n recomendada en fr\xEDo y revisa los niveles antes de viajes largos.", "Guarda cada servicio: un buen historial permite tomar mejores decisiones."]).map((t) => `<div class="tip"><span class="tag">CHILE \xB7 PREVENTIVO</span><p>${esc(t)}</p></div>`).join("")}</section><button class="btn full" data-action="add-record">\uFF0B Registrar mantenci\xF3n</button></aside></div>` : `<section class="card empty"><div class="icon">\u25C7</div><h2>Tu garaje est\xE1 esperando.</h2><p>Agrega tu autom\xF3vil, camioneta o moto para empezar a construir su historia.</p><button class="btn primary" data-action="add-vehicle">Agregar mi primer veh\xEDculo ${arrow}</button></section>`}`
+    );
+  }
+  function renderGarage() {
+    shell(
+      `<div class="row between wrap welcome"><div><span class="eyebrow">CADA VEH\xCDCULO TIENE UNA HISTORIA</span><h1>Mis veh\xEDculos</h1><p>Elige cu\xE1l quieres cuidar hoy.</p></div><button class="btn primary" data-action="add-vehicle">\uFF0B Agregar veh\xEDculo</button></div><div class="grid2">${vehicles.length ? vehicles.map((v) => `<article class="card"><div class="row between"><span class="tag">${esc(v.type)}</span><button class="btn small danger" data-delete-vehicle="${esc(v.id)}">Eliminar</button></div><div class="vehicle-visual">${vehicleArt(v.type)}</div><h2>${esc(v.brand)} ${esc(v.model)}</h2><p class="muted">${v.year} \xB7 ${formatKm(v.mileage)} km</p><button class="btn primary full" data-open-vehicle="${esc(v.id)}">Ver mi veh\xEDculo ${arrow}</button></article>`).join("") : '<section class="card empty"><h2>A\xFAn no tienes veh\xEDculos.</h2><p>Agrega uno para comenzar.</p></section>'}</div>`
+    );
+  }
+  function renderRecords() {
+    const v = vehicle();
+    shell(
+      `<div class="row between wrap welcome"><div><span class="eyebrow">SU HISTORIA, SIEMPRE A MANO</span><h1>Bit\xE1cora de mantenciones</h1><p>Servicios, kil\xF3metros e inversi\xF3n. Todo ordenado.</p></div>${v ? '<div class="row wrap"><button class="btn" data-action="export">\u2193 Exportar CSV</button><button class="btn primary" data-action="add-record">\uFF0B Registrar servicio</button></div>' : ""}</div>${tabs()}${v ? `<p class="muted">${esc(v.brand)} ${esc(v.model)} \xB7 ${records.length} registros \xB7 ${money(records.reduce((s, r) => s + r.cost, 0))} en servicios</p><div class="timeline">${records.length ? records.map((r) => `<article class="card record"><span class="icon">\u2713</span><div><h3>${esc(r.category)}</h3><p>${date(r.service_date)} \xB7 ${formatKm(r.mileage)} km \xB7 ${money(r.cost)}</p>${r.workshop ? `<p>Taller: ${esc(r.workshop)}</p>` : ""}${r.notes ? `<p style="margin-top:10px;white-space:pre-wrap">${esc(r.notes)}</p>` : ""}</div><div class="actions"><button class="btn small danger" data-delete-record="${esc(r.id)}">Eliminar</button></div></article>`).join("") : '<div class="card empty"><h2>El primer registro hace la diferencia.</h2><p>Registra un servicio anterior o una nueva mantenci\xF3n para comenzar.</p><button class="btn primary" data-action="add-record">Registrar mantenci\xF3n</button></div>'}</div>` : '<div class="card empty"><h2>Primero agrega un veh\xEDculo.</h2><button class="btn primary" data-action="add-vehicle">Agregar veh\xEDculo</button></div>'}`
+    );
+  }
+  function renderAccount() {
+    shell(
+      `<div class="welcome"><span class="eyebrow">TU ESPACIO PERSONAL</span><h1>Mi cuenta</h1><p>Tus datos y tu membres\xEDa.</p></div><div class="grid2"><section class="card"><h2>${esc(profile.full_name || "Mi cuenta")}</h2><p class="muted">${esc(user.email)}</p><span class="tag">${API.demo ? "DEMO \xB7 DATOS LOCALES" : "SUPABASE \xB7 SESI\xD3N AUTENTICADA"}</span><p class="disclaimer">${API.demo ? "La demo no ofrece seguridad de servidor y sus datos pueden modificarse desde el navegador. Usa \xFAnicamente informaci\xF3n ficticia." : "Cada usuario accede a sus propios veh\xEDculos y registros mediante pol\xEDticas RLS."}</p><button class="btn" data-action="logout" style="margin-top:20px">Cerrar sesi\xF3n</button></section><section class="card"><h2>Tu membres\xEDa</h2><span class="tag">${premium() ? "PREMIUM ACTIVO" : "INACTIVA"}</span><p class="muted" style="margin-top:15px">${premium() ? `Vence el ${date(profile.premium_until)}. La prueba no se renueva autom\xE1ticamente.` : "Activa la suscripci\xF3n simulada para empezar."}</p>${!premium() ? '<button class="btn primary" data-action="subscribe">Activar prueba por 30 d\xEDas</button>' : ""}<p class="disclaimer">No se procesa dinero. Para producci\xF3n se necesita una pasarela y confirmaci\xF3n mediante webhook de servidor.</p></section></div>`
+    );
+  }
+  function openModal(title, body) {
+    if (modal.open) modal.close();
+    modal.innerHTML = `<div class="row between modal-head"><h2 id="modal-title">${title}</h2><button class="close" data-action="close" aria-label="Cerrar ventana">\xD7</button></div>${body}`;
+    modal.showModal();
+  }
+  function requirePremium() {
+    if (!premium()) {
+      view = "dashboard";
+      renderPayment();
+      throw new Error("Tu membres\xEDa est\xE1 inactiva. Act\xEDvala para continuar.");
+    }
+  }
+  function vehicleForm() {
+    requirePremium();
+    openModal(
+      "Un nuevo compa\xF1ero de ruta",
+      `<p class="muted">Completa los datos de tu veh\xEDculo para abrir su bit\xE1cora.</p><form id="vehicle-form"><div class="grid2"><div class="field"><label for="type">Tipo de veh\xEDculo</label><select id="type" name="type" required><option value="">Selecciona un tipo</option>${Object.keys(
+        CATALOG
+      ).map((t) => `<option>${t}</option>`).join(
+        ""
+      )}</select></div><div class="field"><label for="brand">Marca</label><select id="brand" name="brand" required disabled><option value="">Primero elige un tipo</option></select></div></div><div class="field"><label for="model">Modelo</label><select id="model" name="model" required disabled><option value="">Primero elige una marca</option></select></div><div class="grid2"><div class="field"><label for="year">A\xF1o</label><select id="year" name="year" required disabled><option value="">Primero elige un modelo</option></select></div><div class="field"><label for="mileage">Kilometraje actual</label><input class="input" id="mileage" name="mileage" inputmode="numeric" autocomplete="off" required maxlength="7" placeholder="Ej. 15.000"><p class="help">Entre 0 y 999.999 km.</p></div></div><p class="help">Cat\xE1logo acotado. Los rangos iniciales son referencias de disponibilidad y requieren validaci\xF3n documental local; si tu modelo/a\xF1o no aparece, no selecciones uno incorrecto.</p><p class="error" id="form-error" role="alert"></p><div class="modal-footer"><button class="btn" type="button" data-action="close">Cancelar</button><button class="btn primary" type="submit">Agregar a mi garaje ${arrow}</button></div></form>`
+    );
+    const set = (id, entries, hint) => {
+      const s = $(id);
+      s.innerHTML = `<option value="">${hint}</option>` + entries.map((x) => `<option value="${esc(x)}">${esc(x)}</option>`).join("");
+      s.disabled = !entries.length;
+    };
+    $("#type").onchange = () => {
+      set(
+        "#brand",
+        Object.keys(CATALOG[$("#type").value] || {}),
+        "Selecciona una marca"
+      );
+      set("#model", [], "Primero elige una marca");
+      set("#year", [], "Primero elige un modelo");
+    };
+    $("#brand").onchange = () => {
+      set(
+        "#model",
+        (CATALOG[$("#type").value]?.[$("#brand").value] || []).map((m) => m.name),
+        "Selecciona un modelo"
+      );
+      set("#year", [], "Primero elige un modelo");
+    };
+    $("#model").onchange = () => {
+      const m = CATALOG[$("#type").value]?.[$("#brand").value]?.find(
+        (m2) => m2.name === $("#model").value
+      );
+      set(
+        "#year",
+        m ? Array.from(
+          { length: CURRENT_YEAR - m.firstYear + 1 },
+          (_, i) => String(CURRENT_YEAR - i)
+        ) : [],
+        "Selecciona un a\xF1o"
+      );
+    };
+    mask($("#mileage"));
+    bindForm("#vehicle-form", async (f) => {
+      const d = new FormData(f);
+      const v = await API.addVehicle({
+        type: d.get("type"),
+        brand: d.get("brand"),
+        model: d.get("model"),
+        year: Number(d.get("year")),
+        mileage: parseMileage(d.get("mileage"))
+      });
+      selected = v.id;
+      view = "dashboard";
+      plan = null;
+      modal.close();
+      await load();
+      toast("Tu veh\xEDculo ya tiene un lugar en el garaje.");
+    });
+  }
+  function mask(input) {
+    input.addEventListener("beforeinput", (e) => {
+      if (e.inputType === "insertText" && e.data && !/^\d+$/.test(e.data))
+        e.preventDefault();
+    });
+    input.addEventListener("paste", (e) => {
+      const t = e.clipboardData.getData("text");
+      if (!/^\d{1,6}$|^\d{1,3}(\.\d{3})+$/.test(t.trim())) {
+        e.preventDefault();
+        toast("Pega un kilometraje entero, sin negativos ni decimales.");
+      }
+    });
+    input.addEventListener("input", () => {
+      const digits = input.value.replaceAll(".", "");
+      if (!/^\d*$/.test(digits)) {
+        input.setCustomValidity("Usa solo n\xFAmeros enteros.");
+        return;
+      }
+      input.setCustomValidity(digits.length > 6 ? "M\xE1ximo 999.999 km." : "");
+      if (digits.length <= 6)
+        input.value = digits ? formatKm(Number(digits)) : "";
+    });
+  }
+  function bindForm(selector, fn) {
+    $(selector).onsubmit = async (e) => {
+      e.preventDefault();
+      const b = e.target.querySelector("[type=submit]");
+      b.disabled = true;
+      $("#form-error").textContent = "";
+      try {
+        await fn(e.target);
+      } catch (e2) {
+        if ($("#form-error")) $("#form-error").textContent = e2.message;
+        else fail(e2);
+      } finally {
+        b.disabled = false;
+      }
+    };
+  }
+  function mileageForm() {
+    const v = vehicle();
+    requirePremium();
+    openModal(
+      "Actualizar kilometraje",
+      `<p class="muted">${esc(v.brand)} ${esc(v.model)} \xB7 Actual: ${formatKm(v.mileage)} km</p><form id="mileage-form"><label for="mileage">Nuevo kilometraje</label><input class="input" id="mileage" name="mileage" inputmode="numeric" required maxlength="7" value="${formatKm(v.mileage)}"><p class="help">El od\xF3metro no puede disminuir.</p><p class="error" id="form-error" role="alert"></p><div class="modal-footer"><button class="btn" type="button" data-action="close">Cancelar</button><button class="btn primary" type="submit">Guardar</button></div></form>`
+    );
+    mask($("#mileage"));
+    bindForm("#mileage-form", async (f) => {
+      await API.updateMileage(v.id, parseMileage(new FormData(f).get("mileage")));
+      plan = null;
+      modal.close();
+      await load();
+      toast("Kilometraje actualizado. Genera un nuevo plan.");
+    });
+  }
+  var categories = [
+    "Aceite y filtro",
+    "Transmisi\xF3n y cadena",
+    "Frenos y neum\xE1ticos",
+    "Filtro de aire y buj\xEDa",
+    "Filtro de aire y habit\xE1culo",
+    "Refrigeraci\xF3n y correas",
+    "Bater\xEDa y sistema el\xE9ctrico",
+    "Revisi\xF3n general",
+    "Otro servicio"
+  ];
+  function recordForm() {
+    requirePremium();
+    const v = vehicle();
+    if (!v) return vehicleForm();
+    openModal(
+      "Cada servicio cuenta",
+      `<p class="muted">${esc(v.brand)} ${esc(v.model)} \xB7 Guarda los detalles de la mantenci\xF3n.</p><form id="record-form"><div class="field"><label for="category">Servicio realizado</label><select id="category" name="category" required>${categories.map((c) => `<option>${c}</option>`).join("")}</select></div><div class="grid2"><div class="field"><label for="service-date">Fecha del servicio</label><input class="input" type="date" id="service-date" name="service_date" required min="${v.year}-01-01" max="${today()}" value="${today()}"></div><div class="field"><label for="mileage">Kilometraje del servicio</label><input class="input" id="mileage" name="mileage" inputmode="numeric" maxlength="7" required value="${formatKm(v.mileage)}"></div></div><div class="grid2"><div class="field"><label for="cost">Costo total (CLP)</label><input class="input" id="cost" name="cost" type="number" min="0" max="99999999" step="1" required placeholder="Ej. 45000"></div><div class="field"><label for="workshop">Taller (opcional)</label><input class="input" id="workshop" name="workshop" maxlength="100" placeholder="Nombre del taller"></div></div><div class="field"><label for="notes">Detalles (opcional)</label><textarea id="notes" name="notes" maxlength="1500" rows="3" placeholder="Repuestos, observaciones o recomendaciones del taller"></textarea></div><p class="help">Si el servicio tiene m\xE1s kil\xF3metros que el od\xF3metro registrado, se actualizar\xE1 el veh\xEDculo. Los servicios hist\xF3ricos no lo disminuyen.</p><p class="error" id="form-error" role="alert"></p><div class="modal-footer"><button class="btn" type="button" data-action="close">Cancelar</button><button class="btn primary" type="submit">Guardar mantenci\xF3n</button></div></form>`
+    );
+    mask($("#mileage"));
+    bindForm("#record-form", async (f) => {
+      const d = new FormData(f), cost = Number(d.get("cost")), day = d.get("service_date");
+      if (!Number.isInteger(cost) || cost < 0 || cost > 99999999)
+        throw new Error("Costo inv\xE1lido.");
+      if (day < `${v.year}-01-01` || day > today())
+        throw new Error("Selecciona una fecha entre el a\xF1o del veh\xEDculo y hoy.");
+      await API.addRecord(v.id, {
+        category: d.get("category"),
+        service_date: day,
+        mileage: parseMileage(d.get("mileage")),
+        cost,
+        workshop: d.get("workshop").trim(),
+        notes: d.get("notes").trim()
+      });
+      plan = null;
+      modal.close();
+      await load();
+      toast("Mantenci\xF3n registrada. Tu historial est\xE1 al d\xEDa.");
+    });
+  }
+  function confirmDialog(title, text, action) {
+    openModal(
+      title,
+      `<p class="muted">${esc(text)}</p><div class="modal-footer"><button class="btn" data-action="close">Cancelar</button><button class="btn danger" id="confirm-delete">S\xED, eliminar</button></div>`
+    );
+    $("#confirm-delete").onclick = async (e) => {
+      e.target.disabled = true;
+      try {
+        await action();
+        modal.close();
+        plan = null;
+        await load();
+        toast("El registro se elimin\xF3.");
+      } catch (e2) {
+        fail(e2);
+        $("#confirm-delete").disabled = false;
+      }
+    };
+  }
+  function renderRecovery() {
+    shell(
+      '<section class="card" style="max-width:500px"><h2>Elige una nueva contrase\xF1a</h2><form id="recovery-form"><label for="new-password">Nueva contrase\xF1a</label><input id="new-password" name="password" class="input" type="password" minlength="8" maxlength="128" autocomplete="new-password" required><p class="error" id="form-error" role="alert"></p><button type="submit" class="btn primary">Guardar contrase\xF1a</button></form></section>'
+    );
+    bindForm("#recovery-form", async (f) => {
+      await API.changePassword(new FormData(f).get("password"));
+      recovery = false;
+      await load();
+      toast("Contrase\xF1a actualizada.");
+    });
+  }
+  function exportCSV() {
+    const rows = [
+      ["Servicio", "Fecha", "Kilometraje", "Costo CLP", "Taller", "Notas"],
+      ...records.map((r) => [
+        r.category,
+        r.service_date,
+        r.mileage,
+        r.cost,
+        r.workshop,
+        r.notes
+      ])
+    ];
+    const safe = (x) => {
+      let s = String(x ?? "");
+      if (/^[\s]*[=+@-]/.test(s)) s = "'" + s;
+      return '"' + s.replaceAll('"', '""') + '"';
+    };
+    const blob = new Blob(
+      ["\uFEFF" + rows.map((r) => r.map(safe).join(";")).join("\r\n")],
+      { type: "text/csv;charset=utf-8;" }
+    );
+    const url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url;
+    a.download = "bitacora-garaje.csv";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1e3);
+  }
+  async function load() {
+    const ticket = ++loadVersion;
+    const [p, vs] = await Promise.all([API.profile(), API.vehicles()]);
+    if (ticket !== loadVersion) return;
+    profile = p;
+    vehicles = vs;
+    if (!vehicles.some((v) => v.id === selected))
+      selected = vehicles[0]?.id || null;
+    const rs = selected ? await API.records(selected) : [];
+    if (ticket !== loadVersion) return;
+    records = rs;
+    render();
+  }
+  document.addEventListener("click", async (e) => {
+    const b = e.target.closest("button");
+    if (!b || b.disabled) return;
+    try {
+      if (b.dataset.auth) {
+        authMode = b.dataset.auth;
+        renderAuth();
+        return;
+      }
+      if (b.dataset.oauth) {
+        b.disabled = true;
+        try {
+          await API.oauth(b.dataset.oauth);
+        } finally {
+          b.disabled = false;
+        }
+        return;
+      }
+      if (b.dataset.view) {
+        view = b.dataset.view;
+        render();
+        return;
+      }
+      if (b.dataset.vehicle || b.dataset.openVehicle) {
+        selected = b.dataset.vehicle || b.dataset.openVehicle;
+        if (b.dataset.openVehicle) view = "dashboard";
+        plan = null;
+        await load();
+        return;
+      }
+      if (b.dataset.deleteVehicle) {
+        const id = b.dataset.deleteVehicle;
+        confirmDialog(
+          "Eliminar veh\xEDculo",
+          "Se eliminar\xE1n el veh\xEDculo y todas sus mantenciones. Esta acci\xF3n no se puede deshacer.",
+          () => API.removeVehicle(id)
+        );
+        return;
+      }
+      if (b.dataset.deleteRecord) {
+        confirmDialog(
+          "Eliminar mantenci\xF3n",
+          "Se eliminar\xE1 este servicio. El kilometraje actual del veh\xEDculo se conservar\xE1.",
+          () => API.removeRecord(b.dataset.deleteRecord)
+        );
+        return;
+      }
+      switch (b.dataset.action) {
+        case "theme":
+          theme();
+          break;
+        case "close":
+          modal.close();
+          break;
+        case "logout":
+          await API.signOut();
+          user = null;
+          profile = null;
+          vehicles = [];
+          records = [];
+          selected = null;
+          plan = null;
+          recovery = false;
+          ++loadVersion;
+          view = "dashboard";
+          if (modal.open) modal.close();
+          render();
+          break;
+        case "subscribe":
+          b.disabled = true;
+          try {
+            await API.subscribe();
+            view = "dashboard";
+            await load();
+            toast(
+              "Prueba activada por 30 d\xEDas. No se ha realizado ning\xFAn cobro."
+            );
+          } finally {
+            b.disabled = false;
+          }
+          break;
+        case "add-vehicle":
+          vehicleForm();
+          break;
+        case "mileage":
+          mileageForm();
+          break;
+        case "add-record":
+          recordForm();
+          break;
+        case "generate": {
+          requirePremium();
+          const v = vehicle();
+          if (!v) return;
+          const id = v.id, version = loadVersion;
+          generating = true;
+          render();
+          try {
+            const next = await API.plan(v, records);
+            if (user && selected === id && version === loadVersion) {
+              plan = next;
+              toast(
+                API.demo ? "Plan de referencia generado." : "An\xE1lisis de IA generado."
+              );
+            }
+          } finally {
+            generating = false;
+            render();
+          }
+          break;
+        }
+        case "export":
+          exportCSV();
+          break;
+        case "forgot": {
+          const email = $("#email")?.value;
+          if (!email || !$("#email").checkValidity())
+            throw new Error("Escribe primero un correo v\xE1lido en el formulario.");
+          await API.reset(email);
+          toast("Si la cuenta existe, recibir\xE1s un enlace de recuperaci\xF3n.");
+          break;
+        }
+        case "privacy":
+          openModal(
+            "Privacidad y condiciones",
+            `<p>Garaje Premium es una aplicaci\xF3n de seguimiento de mantenciones. Los planes orientativos no sustituyen el manual del fabricante ni una evaluaci\xF3n mec\xE1nica.</p><p>En modo demo, los datos permanecen en este navegador. No se realizan cobros ni se env\xEDan correos. Evita datos personales reales.</p><p>Al conectar Supabase, los datos de cuenta, veh\xEDculos y servicios se almacenan en tu proyecto. Al generar un an\xE1lisis de IA, se env\xEDan al proveedor el tipo, marca, modelo, a\xF1o, kilometraje y categor\xEDas de servicios; no el correo, nombre, taller ni notas libres.</p><p>La suscripci\xF3n disponible es una simulaci\xF3n de 30 d\xEDas, sin renovaci\xF3n. La pol\xEDtica comercial, identidad del responsable y pol\xEDtica de privacidad definitiva deben configurarse antes de ofrecer el servicio al p\xFAblico.</p><button class="btn full" data-action="close">Entendido</button>`
+          );
+          break;
+      }
+    } catch (e2) {
+      fail(e2);
+    }
+  });
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      const r = modal.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)
+        modal.close();
+    }
+  });
+  window.addEventListener("storage", async (e) => {
+    if (API.demo && e.key === "garaje-premium-demo-v1") {
+      try {
+        user = await API.session();
+        plan = null;
+        if (user) await load();
+        else render();
+      } catch (e2) {
+        fail(e2);
+      }
+    }
+  });
+  async function start() {
+    try {
+      user = await API.init();
+      API.onAuth(async (event) => {
+        try {
+          user = await API.session();
+          if (event === "PASSWORD_RECOVERY") recovery = true;
+          if (!user) {
+            ++loadVersion;
+            profile = null;
+            vehicles = [];
+            records = [];
+            selected = null;
+            plan = null;
+            view = "dashboard";
+            render();
+          } else await load();
+        } catch (e) {
+          fail(e);
+        }
+      });
+      if (user) await load();
+      else render();
+    } catch (e) {
+      app.innerHTML = `<main class="loading"><section class="card" style="max-width:520px;margin:20px"><h2>Falta un paso de configuraci\xF3n</h2><p>${esc(e.message)}</p><p class="muted">Revisa config.js y las instrucciones del README. La aplicaci\xF3n no permite entrar sin una sesi\xF3n v\xE1lida.</p><button class="btn primary" data-action="reload">Volver a intentar</button></section></main>`;
+      app.querySelector("button").onclick = () => location.reload();
+    }
+  }
+  start();
+})();
+</script></body></html>
