@@ -1,0 +1,4 @@
+# La función verifica la identidad explícitamente con auth.getUser().
+# Compatible con los tokens de firma nuevos de Supabase.
+[functions.maintenance-plan]
+verify_jwt = false

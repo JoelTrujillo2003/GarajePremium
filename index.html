@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101820" />
+    <meta
+      name="description"
+      content="Tu garaje, bajo control. Bitácora de mantenciones para autos, camionetas y motos en Chile."
+    />
+    <title>Garaje Premium · Tu vehículo, bajo control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.min.js"
+      defer
+    ></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <div id="app"><div class="loading">Preparando tu garaje…</div></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="modal" aria-labelledby="modal-title"></dialog>
+    <noscript>Activa JavaScript para usar Garaje Premium.</noscript>
+  </body>
+</html>

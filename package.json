@@ -1,0 +1,16 @@
+{
+  "name": "garaje-premium",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bitácora vehicular premium para Chile con Supabase",
+  "scripts": {
+    "start": "python3 -m http.server 5173 --bind 0.0.0.0",
+    "test": "node --test tests/domain.test.js",
+    "check": "node --check app.js && node --check api.js && node --check catalog.js && node --check planner.js",
+    "test:edge": "node --test tests/edge.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
