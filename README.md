@@ -203,3 +203,7 @@ Validado durante la entrega: pruebas de dominio, flujo E2E de demo en Chromium, 
 El frontend se puede alojar como archivos estáticos. Incluye todos los archivos de raíz usados por `index.html`. No incluyas archivos privados de entorno. Configura HTTPS, URLs autorizadas de Supabase y `ALLOWED_ORIGIN` de la función con la dirección publicada. Tailwind, Supabase JS y las fuentes se descargan de sus CDN; para despliegues con restricciones estrictas puedes alojar esas dependencias localmente.
 
 Antes de comercializar: valida el catálogo chileno, despliega y prueba los proveedores reales, integra la pasarela si cobrarás, y completa la política de privacidad/condiciones con la identidad del responsable y las condiciones comerciales del servicio.
+
+## Mapa de producto del Hito 1
+
+La [diapositiva editable](docs/mapa-producto/Mapa-de-producto-editable.pptx) y la [presentación con el mapa agregado](docs/mapa-producto/Presentacion-con-mapa-de-producto.pptx) muestran el recorrido de la propuesta original. También están disponibles la [vista previa](docs/mapa-producto/mapa-de-producto.png) y la [guía de implementación](docs/mapa-producto/GUIA_DE_IMPLEMENTACION.md). La guía distingue el alcance de esa presentación del estado actual de este repositorio.
